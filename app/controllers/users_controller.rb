@@ -16,7 +16,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       signin @user
-      flash[:success] = "Your account has been created succcessfully"
+      flash[:success] = "Your account has been created successfully"
       redirect_to @user
     else
       render :new
@@ -39,7 +39,7 @@ class UsersController < ApplicationController
   def destroy
     if @user.destroy
       signout
-      flash[:success] = "Your account has been removed succcessfully"
+      flash[:success] = "Your account has been removed successfully"
       redirect_to root_path
     end
   end
@@ -51,7 +51,7 @@ private
   end
 
   def user_params
-    params.require(:user).permit( :username, :email, :password, :password_confimation)
+    params.require(:user).permit( :username, :email, :password, :password_confirmation)
   end
 
 end
