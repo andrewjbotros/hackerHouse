@@ -14,6 +14,11 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    if @user.save
+      redirect_to @user, :notice => "Signed Up"
+    else
+      render "new"
+    end
   end
 
   def edit
@@ -22,7 +27,7 @@ class UsersController < ApplicationController
   def update
     if @user.update(user_params)
       # signin @user
-      flash[:success] = "Your account has been udpated succcessfully"
+      flash[:success] = "Your account has been updated successfully"
       redirect_to @user
     else
       render :new
