@@ -7,7 +7,7 @@
 <%= csrf_meta_tags %>
 </head>
 <body>
-
+  <%= render 'alerts/flash_message' unless flash.empty? %>
   <%= yield %>
 
 </body>
