@@ -14,6 +14,13 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    if @user.save
+      # signin @user
+      flash[:success] = "Your account has been created succcessfully"
+      redirect_to @user
+    else
+      render :new
+    end
   end
 
   def edit
@@ -30,6 +37,11 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    if @user.destroy
+      # signout
+      flash[:success] = "Your account has been removed succcessfully"
+      redirect_to root_path
+    end
   end
 
 private
