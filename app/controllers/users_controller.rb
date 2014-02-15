@@ -15,17 +15,11 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-<<<<<<< HEAD
-      redirect_to @user, :notice => "Signed Up"
-    else
-      render "new"
-=======
-      # signin @user
+      signin @user
       flash[:success] = "Your account has been created succcessfully"
       redirect_to @user
     else
       render :new
->>>>>>> 0c8972cbd76fb20c8d2513b3e386769e250318ab
     end
   end
 
@@ -34,7 +28,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      # signin @user
+      signin @user
       flash[:success] = "Your account has been updated successfully"
       redirect_to @user
     else
@@ -44,7 +38,7 @@ class UsersController < ApplicationController
 
   def destroy
     if @user.destroy
-      # signout
+      signout
       flash[:success] = "Your account has been removed succcessfully"
       redirect_to root_path
     end
